@@ -1,6 +1,4 @@
 
-import java.io.*;
-
 public class Percolation {
     // create N-by-N grid, with all sites blocked
     private boolean[] sites;

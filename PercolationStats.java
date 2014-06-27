@@ -1,6 +1,4 @@
 
-import java.io.*;
-
 public class PercolationStats {
     private double[] threshold;
     private int numtests;
