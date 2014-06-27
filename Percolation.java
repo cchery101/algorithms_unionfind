@@ -50,20 +50,4 @@ public class Percolation {
     {
         return graph.connected(0, size * size + 1);
     }
-
-    public static void main(String[] args) {
-        Percolation myobj = new Percolation(3);
-        // test site filling
-        myobj.open(1,1);
-        myobj.open(2,2);
-        System.out.println(myobj.isFull(1,1));  // true
-        System.out.println(myobj.isFull(2,2));  // false
-        myobj.open(1,2);
-        System.out.println(myobj.isFull(2,2));  // true
-        myobj.open(3,3);
-        System.out.println(myobj.isFull(3,3));  // false
-        myobj.open(3,2);
-        System.out.println(myobj.isFull(3,3));  // true
-        System.out.println(myobj.percolates()); // true
-    }
 }
