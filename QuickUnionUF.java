@@ -22,7 +22,12 @@ public class QuickUnionUF
     // return p's root, by moving recursively up through id tree
     private int root(int p)
     {
-        while (p != id[p]) p = id[p];
+        while (p != id[p])
+        {
+            // tree compression - halve the path length
+            id[p] = id[id[p]];
+            p = id[p];
+        }
         return p;
     }
 
