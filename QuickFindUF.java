@@ -2,7 +2,7 @@
 public class QuickFindUF
 {
     // id[i] is the connected group of element i
-    private int[] id;
+    public int[] id;
 
     // constructor: initialise group of size N with no connections
     public QuickFindUF(int N)
