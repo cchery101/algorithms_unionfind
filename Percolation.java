@@ -62,9 +62,4 @@ public class Percolation {
     {
         return graph.connected(0, size * size + 1);
     }
-    // test client
-    public static void main(String[] args)
-    {
-        Percolation myobj = new Percolation(10);
-    }
 }

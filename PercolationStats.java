@@ -6,21 +6,23 @@ public class PercolationStats {
     public PercolationStats(int N, int T)
     {
         numtests = T;
+        int i;
+        int j;
         Percolation myobj;
         if (N <= 0 || T <= 0) throw new java.lang.IllegalArgumentException();
         threshold = new double[T];
         for (int test = 0; test < T; test++)
         {
             myobj = new Percolation(N);
+            threshold[test] = 0;
             while (!myobj.percolates())
             {
                 // open random sites while there is no percolation
-                myobj.open(StdRandom.uniform(N) + 1, StdRandom.uniform(N) + 1);
-            }
-            threshold[test] = 0;
-            for (int i = 1; i <= N; i++) {
-                for (int j = 1; j <= N; j++) {
-                    if (myobj.isOpen(i, j)) threshold[test] += 1;
+                i = StdRandom.uniform(N);
+                j = StdRandom.uniform(N);
+                if (!myobj.isOpen(i + 1, j + 1)) {
+                    myobj.open(i + 1, j + 1);
+                    threshold[test] += 1;
                 }
             }
             threshold[test] = threshold[test] / (N * N);
