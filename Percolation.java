@@ -6,15 +6,6 @@ public class Percolation {
     private WeightedQuickUnionUF graphfull;
     private int size;
 
-    private int gridtounion(int i, int j) {
-        return (i - 1) * size + j;
-    }
-
-    private void checkindices(int i, int j) {
-        if (i <= 0 || j <= 0 || i > size || j > size)
-            { throw new java.lang.IndexOutOfBoundsException(); }
-    }
-
     public Percolation(int N)
     {
         if (N <= 0)  throw new java.lang.IllegalArgumentException();
@@ -24,6 +15,14 @@ public class Percolation {
             { sites[i] = false; }
         graph = new WeightedQuickUnionUF(N * N + 2);
         graphfull = new WeightedQuickUnionUF(N * N + 2);
+    }
+    // index conversion and checking
+    private int gridtounion(int i, int j) {
+        return (i - 1) * size + j;
+    }
+    private void checkindices(int i, int j) {
+        if (i <= 0 || j <= 0 || i > size || j > size)
+            { throw new java.lang.IndexOutOfBoundsException(); }
     }
     // open site (row i, column j) if it is not already
     public void open(int i, int j)
@@ -45,7 +44,6 @@ public class Percolation {
         if (i < size && isOpen(i+1, j)) graphfull.union(siteindex, siteindex + size);
         if (j > 1 && isOpen(i, j-1))    graphfull.union(siteindex, siteindex - 1);
         if (j < size && isOpen(i, j+1)) graphfull.union(siteindex, siteindex + 1);
-
     }
     // is site (row i, column j) open?
     public boolean isOpen(int i, int j)
