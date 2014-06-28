@@ -7,6 +7,7 @@ public class Percolation {
 
     public Percolation(int N)
     {
+        if (N <= 0)  throw new java.lang.IllegalArgumentException();
         size = N;
         sites = new boolean[N * N + 2];
         for (int i = 0; i < N * N + 2; i++)
@@ -47,5 +48,10 @@ public class Percolation {
     public boolean percolates()
     {
         return graph.connected(0, size * size + 1);
+    }
+    // test client
+    public static void main(String[] args)
+    {
+        Percolation myobj = new Percolation(10);
     }
 }
